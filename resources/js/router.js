@@ -4,6 +4,7 @@ import Messages from './views/Messages.vue';
 import Register from './views/Register.vue';
 import Login from './views/Login.vue';
 import { authState } from "./providers/auth.js";
+import UpdateMessages from "./views/UpdateMessages.vue";
 
 let routes = [
     {
@@ -32,6 +33,11 @@ let routes = [
         path: '/login',
         name: 'Login',
         component: Login
+    },
+    {
+        path: '/messages/update/:id',
+        name: 'UpdateMessage',
+        component: UpdateMessages
     },
 ];
 

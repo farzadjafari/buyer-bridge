@@ -15,6 +15,8 @@
                 <p class="text-gray-700 mb-2">Body: {{ pastMessage.body }}</p>
                 <p class="text-gray-700 mb-2">Opened: {{ pastMessage.is_opened }}</p>
                 <small class="text-gray-600">Scheduled Opening Time: {{ pastMessage.scheduled_opening_time }}</small>
+
+                <router-link :to="`/messages/update/${pastMessage.id}`" class="mt-4 block text-center px-4 py-2 bg-green-500 text-white rounded-md">Update</router-link>
             </div>
         </div>
 
