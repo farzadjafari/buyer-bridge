@@ -5,39 +5,51 @@
         <form @submit.prevent="submit" class="space-y-6">
             <div>
                 <label for="title" class="block text-sm font-medium text-gray-700">Message title</label>
-                <input type="text" name="title" id="title" v-model="title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="text" name="title" id="title" v-model="title"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <small v-if="errors.title" class="mt-1 text-red-500">
+                    {{ errors.title[0] }}
+                </small>
             </div>
 
             <div>
                 <label for="body" class="block text-sm font-medium text-gray-700">Message body</label>
-                <input type="text" name="body" id="body" v-model="body" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <textarea name="body" id="body" v-model="body"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                <small v-if="errors.body" class="mt-1 text-red-500">
+                    {{ errors.body[0] }}
+                </small>
             </div>
 
             <div>
                 <label for="time" class="block text-sm font-medium text-gray-700">Scheduled Opening Time</label>
-                <input type="date" name="scheduled_opening_time" id="time" v-model="scheduledOpeningTime" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="date" name="scheduled_opening_time" id="time" v-model="scheduledOpeningTime"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <small v-if="errors.scheduled_opening_time" class="mt-1 text-red-500">
+                    {{ errors.scheduled_opening_time[0] }}
+                </small>
             </div>
 
-            <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
+            <button type="submit"
+                    class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Submit
+            </button>
         </form>
-
-        <div v-if="error" class="mt-4 text-red-500">
-            Error: {{ error }}
-        </div>
     </div>
 
 </template>
 
 <script>
 import axios from '../axios.js';
+
 export default {
     emits: ['messageCreated'],
-    data () {
+    data() {
         return {
             title: '',
             body: '',
             scheduledOpeningTime: '',
-            error: null,
+            errors: {},
         }
     },
     methods: {
@@ -52,16 +64,17 @@ export default {
                 .then(response => {
                     this.$emit('messageCreated', response.data.data);
                     this.resetForm();
-                    this.error = null;
+                    this.errors = {};
                 })
-                .catch(error => {
-                    this.error = 'All fields are required.';
+                .catch(({response}) => {
+                    this.errors = response.data.errors;
                 })
         },
         resetForm() {
             this.title = '';
             this.body = '';
             this.scheduledOpeningTime = '';
+            this.errors = {};
         }
     }
 }

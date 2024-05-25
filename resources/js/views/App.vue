@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { authState, logout } from "../providers/auth";
+import {authState, logout} from "../providers/auth";
 
 export default {
     name: 'App',

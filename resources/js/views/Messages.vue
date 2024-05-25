@@ -6,7 +6,7 @@
 
         <PastMessagesCard :past-messages="pastMessages" class="mt-10"/>
 
-        <message-form @messageCreated="handleMessageCreated" class="mt-10"></message-form>
+        <MessageForm @messageCreated="handleMessageCreated" class="mt-10"></MessageForm>
 
         <div v-if="error" class="mt-4 text-red-500">
             {{ error }}
