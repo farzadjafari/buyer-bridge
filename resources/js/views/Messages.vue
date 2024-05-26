@@ -2,9 +2,9 @@
     <div class="max-w-4xl mx-auto p-8">
         <h1 class="text-3xl font-bold mb-8 text-center">Your Messages</h1>
 
-        <CapsuleMessagesCard :capsule-messages="capsuleMessages"/>
+        <CapsuleMessages :capsule-messages="capsuleMessages"/>
 
-        <PastMessagesCard :past-messages="pastMessages" class="mt-10"/>
+        <PastMessages :past-messages="pastMessages" class="mt-10"/>
 
         <MessageForm @messageCreated="handleMessageCreated" class="mt-10"></MessageForm>
 
@@ -17,13 +17,13 @@
 <script>
 import axios from '../axios';
 import MessageForm from "../components/MessageForm.vue";
-import CapsuleMessagesCard from "../components/CapsuleMessagesCard.vue";
-import PastMessagesCard from "../components/PastMessagesCard.vue";
+import CapsuleMessages from "../components/CapsuleMessages.vue";
+import PastMessages from "../components/PastMessages.vue";
 
 export default {
     components: {
-        PastMessagesCard,
-        CapsuleMessagesCard,
+        PastMessages,
+        CapsuleMessages,
         MessageForm
     },
     data() {

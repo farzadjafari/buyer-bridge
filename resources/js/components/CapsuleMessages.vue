@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="capsule-messages">
         <h2 class="text-2xl font-semibold mb-4">Capsule messages</h2>
         <div v-if="capsuleMessages.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div v-for="capsuleMessage in capsuleMessages" :key="capsuleMessage.id"
