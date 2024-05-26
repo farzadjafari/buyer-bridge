@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-axios.get('/sanctum/csrf-cookie').then(() => {
-
-});
 
 axios.interceptors.request.use(config => {
     const token = localStorage.getItem('token');
@@ -15,5 +12,7 @@ axios.interceptors.request.use(config => {
 }, error => {
     return Promise.reject(error);
 });
+
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 export default axios;

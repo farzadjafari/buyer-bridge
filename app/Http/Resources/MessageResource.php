@@ -20,6 +20,7 @@ class MessageResource extends JsonResource
             'body' => $this->body,
             'is_opened' => $this->is_opened,
             'scheduled_opening_time' => $this->scheduled_opening_time,
+            'is_past' => $this->isPast()
         ];
     }
 }

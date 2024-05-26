@@ -58,9 +58,12 @@ export default {
                     this.error = 'Failed to load messages. Please try again later.';
                 });
         },
-        handleMessageCreated() {
-            this.fetchCapsuleMessages();
-            this.fetchPastMessages();
+        handleMessageCreated(message) {
+            if (message.is_past) {
+                this.pastMessages.push(message);
+            } else {
+                this.capsuleMessages.push(message);
+            }
         }
     }
 };

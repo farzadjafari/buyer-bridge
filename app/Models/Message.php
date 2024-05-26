@@ -21,6 +21,11 @@ class Message extends Model
 
     public function canBeOpened(): bool
     {
+        return $this->isPast();
+    }
+
+    public function isPast()
+    {
         return Carbon::parse($this->scheduled_opening_time)->isPast();
     }
 }

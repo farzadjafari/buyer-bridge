@@ -47,6 +47,7 @@
 
 <script>
 import {login} from "../providers/auth.js";
+import axios from '../axios.js';
 
 export default {
     data() {

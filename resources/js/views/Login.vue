@@ -30,6 +30,7 @@
 
 <script>
 import {login as loginUser} from "../providers/auth.js";
+import axios from '../axios.js';
 
 export default {
     data() {
