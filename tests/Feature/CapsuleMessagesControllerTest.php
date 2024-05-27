@@ -40,7 +40,7 @@ class CapsuleMessagesControllerTest extends TestCase
                 'title' => $futureMessage->title,
             ])
             ->assertJsonMissing([
-                'body' => $futureMessage->id,
+                'body' => $futureMessage->body,
             ])
             ->assertJsonMissing([
                 'id' => $pastMessage->id,
